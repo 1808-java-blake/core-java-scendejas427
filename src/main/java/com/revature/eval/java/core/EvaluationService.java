@@ -1,6 +1,7 @@
-package com.revature.eval.java.core;
+ package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +31,15 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		phrase=phrase.replace('-', ' ');
+		String listOfWords;
+		String acronym="";
+		for(int i=0;i < phrase.split(" ").length; i++) {
+			listOfWords =phrase.split(" ")[i];
+			acronym=acronym+listOfWords.charAt(0);
+		}
+		System.out.println(acronym);
+		return acronym.toUpperCase();
 	}
 
 	/**
@@ -84,18 +92,31 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if(sideOne==sideTwo && sideTwo==sideThree) {
+				return true;
+			}
+			else {
+				return false;
+			}
+				
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if(sideOne==sideTwo || sideTwo==sideThree||sideOne==sideThree) {
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if(sideOne!=sideTwo && sideTwo!=sideThree) {
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
 
 	}
@@ -116,8 +137,40 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		char letter;
+		int score=0;
+		string=string.toUpperCase();
+		for(int i=0 ; i<string.length() ;i++) {
+			letter=string.charAt(i);
+			int j;
+			if(letter=='A' ||letter== 'E'||letter== 'I'||letter== 'O'||letter== 'U'||letter== 'L'||letter== 'N'||letter== 'R'||letter== 'S'||letter== 'T') {
+				j=1;
+			}
+			else if(letter== 'D'||letter==  'G') {
+				j=2;
+			}
+			else if(letter=='B' ||letter== 'C'||letter== 'M'||letter== 'P') {
+				j=3;
+			}
+			else if(letter=='F' ||letter== 'H'||letter== 'V'||letter== 'W'||letter== 'Y') {
+				j=4;
+			}
+			else if(letter=='K') {
+				j=5;
+			}
+			else if(letter=='J' ||letter== 'X') {
+				j=8;
+			}
+			else if(letter=='Q' ||letter== 'Z') {
+				j=10;
+			}
+			else {
+				j=0;
+			}
+			score=score+j;
+			
+		}
+		return score;
 	}
 
 	/**
@@ -152,8 +205,31 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		String fix="";
+		string=string.replace('+', ' ');
+		string=string.replace('(', ' ');
+		string=string.replace(')', ' ');
+		string=string.replace('-', ' ');
+		string=string.replace('.', ' ');
+		string=string.replace('[', ' ');
+		string=string.replace(']', ' ');
+		string=string.trim();
+		
+		if(string.split(" ")[0].charAt(0)=='1') {
+			string=string.replaceFirst("1", "");
+		}
+		else {
+			
+		}
+		for(int h=0;h<string.split(" ").length;h++) {
+			fix=fix+string.split(" ")[h];	
+		}
+		if(fix.length()!=10) {
+			throw new IllegalArgumentException();
+		}
+		else {
+			return fix;
+		}
 	}
 
 	/**
@@ -246,8 +322,50 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		String pl="";
+		for(int i=0;i< string.split(" ").length ;i++) {
+			String string1=string.split(" ")[i];
+		
+			int k1=0;
+			char[] temp=new char[ string1.length() + 2];
+			if(string1.charAt(0)=='A' || string1.charAt(0)=='E'||string1.charAt(0)=='I'||string1.charAt(0)=='O'||string1.charAt(0)=='U'
+					||string1.charAt(0)=='a' || string1.charAt(0)=='e'||string1.charAt(0)=='i'||string1.charAt(0)=='o'||string1.charAt(0)=='u') {
+				pl=string1+"ay";
+			}		
+			else if(string1.charAt(0)=='q'||string1.charAt(0)=='Q') {
+				temp=string1.toCharArray();
+				k1=2;
+				for(int i1=k1;i1<string1.length();i1++) {
+					pl=pl+temp[i1];
+				}
+				for(int k2=0;k2<=k1-1;k2++) {
+					pl=pl+temp[k2];
+					
+				}
+				pl=pl+"ay";
+				
+			}
+			else {
+				while(string1.charAt(k1)!='A' && string1.charAt(k1)!='E'&& string1.charAt(k1)!='I'&& string1.charAt(k1)!='O'&& string1.charAt(k1)!='U'
+						&& string1.charAt(k1)!='a' && string1.charAt(k1)!='e'&& string1.charAt(k1)!='i'&& string1.charAt(k1)!='o'&& string1.charAt(k1)!='u') {
+					temp=string1.toCharArray();
+					k1++;
+				}
+				for(int i1=k1;i1<string1.length();i1++) {
+					pl=pl+temp[i1];
+				}
+				for(int k2=0;k2<=k1-1;k2++) {
+					pl=pl+temp[k2];
+					
+				}
+				pl=pl+"ay";
+				
+			}
+			if(string.split(" ").length>1 && i <string.split(" ").length-1 ) {
+				pl=pl+" ";
+			}
+		}
+		return pl;
 	}
 
 	/**
@@ -266,8 +384,21 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		double test9=(double) input;
+		double mode=test9;
+		int power=0;
+		double sum=0;
+		while(mode>0) {
+			mode=(mode-(mode%10))/10;
+			power++;
+		}
+		mode=test9;
+		for(int i=1;i<=power;i++) {
+			sum=sum+(Math.pow(mode%10, power));
+			mode=(mode-(mode%10))/10;
+			
+		}
+		return sum==test9;
 	}
 
 	/**
@@ -281,8 +412,18 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		long num =2;
+		List<Long> al= new ArrayList<Long>();
+		while(l>1) {
+			if(l%num==0) {
+				al.add(num);
+				l=l/num;
+			}
+			else {
+				num++;
+			}
+		}
+		return al;
 	}
 
 	/**
@@ -320,8 +461,20 @@ public class EvaluationService {
 		}
 
 		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			String efg="";
+			for(int i=0;i<string.length();i++) {
+				if('a'<=string.charAt(i) && string.charAt(i)<='z') {
+					efg=efg+ (char)(((((int)string.charAt(i)-'a')+key)%26)+(int)'a');
+				}
+				else if('A'<= string.charAt(i)&& string.charAt(i) <= 'Z') {
+					efg=efg+ (char)(((((int)string.charAt(i)-'A')+key)%26)+(int)'A');
+				}
+				else {
+					efg=efg+string.charAt(i);
+				}
+				
+			}
+		return efg;
 		}
 
 	}
@@ -339,8 +492,37 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		if(i>=1) {
+			int j=1;
+			int run=3;
+			
+			ArrayList<Integer> primes= new ArrayList<Integer>();
+			primes.add(2);
+			while(j<i) {
+				int k=0;
+				for(int each:primes) {
+					if(run%each==0) {
+						run++;
+					}
+					else {
+						k++;
+					}
+					
+				}
+				if(k==primes.size()) {
+					primes.add(run);
+					run++;
+					j++;
+				}
+				else {
+				}
+			}
+			return primes.get(i-1);
+		}
+		else {
+			throw new IllegalArgumentException();
+		}
+
 	}
 
 	/**
@@ -376,8 +558,31 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			String fix="";
+			string=string.replace('.', ' ');
+			string=string.replace(',', ' ');
+			string=string.toLowerCase();
+			string.trim();
+			for(int h=0;h<string.split(" ").length ; h++) {
+				fix=fix+string.split(" ")[h].trim();	
+			}
+			string=fix;
+			String efg1="";
+			for(int j=0;j<string.length();j++) {
+				if('a'<=string.charAt(j) && string.charAt(j)<='z') {
+					efg1=efg1+ (char)((25-((((int)string.charAt(j)-'a'))))+(int)'a');;
+				}
+				else if('0'<=string.charAt(j) && string.charAt(j)<='9') {
+					efg1=efg1+string.charAt(j);
+				}
+				else {
+					efg1=efg1;
+				}
+				if((j+1)%5==0 && j!=string.length()-1) {
+					efg1=efg1+' ';
+				}
+			}
+			return efg1;
 		}
 
 		/**
@@ -387,8 +592,29 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String decode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			String fix="";
+			string=string.replace('.', ' ');
+			string=string.replace(',', ' ');
+			string=string.toLowerCase();
+			string.trim();
+			for(int h=0;h<string.split(" ").length ; h++) {
+				fix=fix+string.split(" ")[h].trim();	
+			}
+			string=fix;
+			String efg1="";
+			for(int j=0;j<string.length();j++) {
+				if('a'<=string.charAt(j) && string.charAt(j)<='z') {
+					efg1=efg1+ (char)((25-((((int)string.charAt(j)-'a'))))+(int)'a');;
+				}
+				else if('0'<=string.charAt(j) && string.charAt(j)<='9') {
+					efg1=efg1+string.charAt(j);
+				}
+				else {
+					efg1=efg1;
+				}
+			
+			}
+			return efg1;
 		}
 	}
 
@@ -415,8 +641,32 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isValidIsbn(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String t="";
+		int summ=0;
+		string=string.replace('-', ' ');
+		for(int e=0; e < string.split(" ").length;e++) {
+			t=t+string.split(" ")[e];
+		}
+		
+		for( int i1=0;i1<9;i1++) {
+			if('0'<=t.charAt(i1) && t.charAt(i1) <='9') {
+				summ=summ+((int)t.charAt(i1)-(int)'0')*(10-i1);
+			}
+			else {
+				return false;
+			}
+		}
+		if(t.charAt(9)=='X') {
+			summ=summ+10;
+		}
+		else if ('0'<=t.charAt(9)&&t.charAt(9)<='9') {
+			summ=summ+(int)t.charAt(9)-(int)'0';
+		}
+		else {
+			return false;
+		}
+		
+		return summ%11==0;
 	}
 
 	/**
@@ -433,8 +683,25 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		string=string.toLowerCase();
+		String noSpace="";
+		String letters="";
+		String spaces;
+		for(int i2=0; i2 < string.split(" ").length; i2++) {
+			noSpace=noSpace+ string.split(" ")[i2];
+		}
+		spaces=noSpace;
+		for(int i3=0;i3<noSpace.length();i3++) {
+			if(spaces.charAt(i3)!=' ') {
+				spaces=spaces.replace(spaces.charAt(i3), ' ');
+				letters=letters+spaces.charAt(i3);
+			}
+			else {
+				
+			}
+			
+		}
+		return letters.length()==26;
 	}
 
 	/**
