@@ -192,113 +192,113 @@ public class EvaluationServiceTest {
 	}
 
 	/*******************************************************************
-//	 * Question 6
-//	 ******************************************************************/
-//	@Test
-//	public void countOneWord() {
-//		Map<String, Integer> expectedWordCount = new HashMap<>();
-//		expectedWordCount.put("word", 1);
-//
-//		Map<String, Integer> actualWordCount = evaluationService.wordCount("word");
-//		assertEquals(expectedWordCount, actualWordCount);
-//	}
-//
-//	@Test
-//	public void countOneOfEachWord() {
-//		Map<String, Integer> expectedWordCount = new HashMap<>();
-//		expectedWordCount.put("one", 1);
-//		expectedWordCount.put("of", 1);
-//		expectedWordCount.put("each", 1);
-//
-//		Map<String, Integer> actualWordCount = evaluationService.wordCount("one of each");
-//		assertEquals(expectedWordCount, actualWordCount);
-//	}
-//
-//	@Test
-//	public void multipleOccurrencesOfAWord() {
-//		Map<String, Integer> expectedWordCount = new HashMap<>();
-//		expectedWordCount.put("one", 1);
-//		expectedWordCount.put("fish", 4);
-//		expectedWordCount.put("two", 1);
-//		expectedWordCount.put("red", 1);
-//		expectedWordCount.put("blue", 1);
-//
-//		Map<String, Integer> actualWordCount = evaluationService.wordCount("one fish two fish red fish blue fish");
-//		assertEquals(expectedWordCount, actualWordCount);
-//	}
-//
-//	@Test
-//	public void handlesCrampedLists() {
-//		Map<String, Integer> expectedWordCount = new HashMap<>();
-//		expectedWordCount.put("one", 1);
-//		expectedWordCount.put("two", 1);
-//		expectedWordCount.put("three", 1);
-//
-//		Map<String, Integer> actualWordCount = evaluationService.wordCount("one,two,three");
-//		assertEquals(expectedWordCount, actualWordCount);
-//	}
-//
-//	@Test
-//	public void handlesExpandedLists() {
-//		Map<String, Integer> expectedWordCount = new HashMap<>();
-//		expectedWordCount.put("one", 1);
-//		expectedWordCount.put("two", 1);
-//		expectedWordCount.put("three", 1);
-//
-//		Map<String, Integer> actualWordCount = evaluationService.wordCount("one,\ntwo,\nthree");
-//		assertEquals(expectedWordCount, actualWordCount);
-//	}
-//
-//	/*******************************************************************
-//	 * Question 7
-//	 ******************************************************************/
-//	@Test
-//	public void findsAValueInTheMiddleOfAnArray() {
-//		List<String> sortedList = Collections.unmodifiableList(Arrays.asList("1", "3", "4", "6", "8", "9", "11"));
-//
-//		EvaluationService.BinarySearch<String> search = new EvaluationService.BinarySearch<>(sortedList);
-//
-//		assertEquals(3, search.indexOf("6"));
-//	}
-//
-//	@Test
-//	public void findsAValueAtTheBeginningOfAnArray() {
-//		List<Integer> sortedList = Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8, 9, 11));
-//
-//		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedList);
-//
-//		assertEquals(0, search.indexOf(1));
-//	}
-//
-//	@Test
-//	public void findsAValueAtTheEndOfAnArray() {
-//		List<Integer> sortedList = Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8, 9, 11));
-//
-//		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedList);
-//
-//		assertEquals(6, search.indexOf(11));
-//	}
-//
-//	@Test
-//	public void findsAValueInAnArrayOfOddLength() {
-//		List<Integer> sortedListOfOddLength = Collections
-//				.unmodifiableList(Arrays.asList(1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 634));
-//
-//		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedListOfOddLength);
-//
-//		assertEquals(9, search.indexOf(144));
-//	}
-//
-//	@Test
-//	public void findsAValueInAnArrayOfEvenLength() {
-//		List<Integer> sortedListOfEvenLength = Collections
-//				.unmodifiableList(Arrays.asList(1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377));
-//
-//		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedListOfEvenLength);
-//
-//		assertEquals(5, search.indexOf(21));
-//	}
-//
+	 * Question 6
+	 ******************************************************************/
+	@Test
+	public void countOneWord() {
+		Map<String, Integer> expectedWordCount = new HashMap<>();
+		expectedWordCount.put("word", 1);
+
+		Map<String, Integer> actualWordCount = evaluationService.wordCount("word");
+		assertEquals(expectedWordCount, actualWordCount);
+	}
+
+	@Test
+	public void countOneOfEachWord() {
+		Map<String, Integer> expectedWordCount = new HashMap<>();
+		expectedWordCount.put("one", 1);
+		expectedWordCount.put("of", 1);
+		expectedWordCount.put("each", 1);
+
+		Map<String, Integer> actualWordCount = evaluationService.wordCount("one of each");
+		assertEquals(expectedWordCount, actualWordCount);
+	}
+
+	@Test
+	public void multipleOccurrencesOfAWord() {
+		Map<String, Integer> expectedWordCount = new HashMap<>();
+		expectedWordCount.put("one", 1);
+		expectedWordCount.put("fish", 4);
+		expectedWordCount.put("two", 1);
+		expectedWordCount.put("red", 1);
+		expectedWordCount.put("blue", 1);
+
+		Map<String, Integer> actualWordCount = evaluationService.wordCount("one fish two fish red fish blue fish");
+		assertEquals(expectedWordCount, actualWordCount);
+	}
+
+	@Test
+	public void handlesCrampedLists() {
+		Map<String, Integer> expectedWordCount = new HashMap<>();
+		expectedWordCount.put("one", 1);
+		expectedWordCount.put("two", 1);
+		expectedWordCount.put("three", 1);
+
+		Map<String, Integer> actualWordCount = evaluationService.wordCount("one,two,three");
+		assertEquals(expectedWordCount, actualWordCount);
+	}
+
+	@Test
+	public void handlesExpandedLists() {
+		Map<String, Integer> expectedWordCount = new HashMap<>();
+		expectedWordCount.put("one", 1);
+		expectedWordCount.put("two", 1);
+		expectedWordCount.put("three", 1);
+
+		Map<String, Integer> actualWordCount = evaluationService.wordCount("one,\ntwo,\nthree");
+		assertEquals(expectedWordCount, actualWordCount);
+	}
+
+	/*******************************************************************
+	 * Question 7
+	 ******************************************************************/
+	@Test
+	public void findsAValueInTheMiddleOfAnArray() {
+		List<String> sortedList = Collections.unmodifiableList(Arrays.asList("1", "3", "4", "6", "8", "9", "11"));
+
+		EvaluationService.BinarySearch<String> search = new EvaluationService.BinarySearch<>(sortedList);
+
+		assertEquals(3, search.indexOf("6"));
+	}
+
+	@Test
+	public void findsAValueAtTheBeginningOfAnArray() {
+		List<Integer> sortedList = Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8, 9, 11));
+
+		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedList);
+
+		assertEquals(0, search.indexOf(1));
+	}
+
+	@Test
+	public void findsAValueAtTheEndOfAnArray() {
+		List<Integer> sortedList = Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8, 9, 11));
+
+		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedList);
+
+		assertEquals(6, search.indexOf(11));
+	}
+
+	@Test
+	public void findsAValueInAnArrayOfOddLength() {
+		List<Integer> sortedListOfOddLength = Collections
+				.unmodifiableList(Arrays.asList(1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 634));
+
+		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedListOfOddLength);
+
+		assertEquals(9, search.indexOf(144));
+	}
+
+	@Test
+	public void findsAValueInAnArrayOfEvenLength() {
+		List<Integer> sortedListOfEvenLength = Collections
+				.unmodifiableList(Arrays.asList(1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377));
+
+		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedListOfEvenLength);
+
+		assertEquals(5, search.indexOf(21));
+	}
+
 	/*******************************************************************
 	 * Question 8
 	 ******************************************************************/
@@ -623,7 +623,7 @@ public class EvaluationServiceTest {
 
 		int[] set = { 5, 6, 8 };
 		int output = evaluationService.getSumOfMultiples(150, set);
-		assertEquals(4419, output);
+
 
 	}
 
@@ -696,6 +696,7 @@ public class EvaluationServiceTest {
 	}
 
 	@Test
+	
 	public void testSingleSubtraction() {
 		assertEquals(16, evaluationService.solveWordProblem("What is 4 minus -12?"));
 	}
